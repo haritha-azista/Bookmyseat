@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Bookmyseat/static/css/main.080b5275.css",
+    "main.js": "/Bookmyseat/static/js/main.ed866f89.js",
+    "static/js/787.bc7d429a.chunk.js": "/Bookmyseat/static/js/787.bc7d429a.chunk.js",
+    "index.html": "/Bookmyseat/index.html",
+    "main.080b5275.css.map": "/Bookmyseat/static/css/main.080b5275.css.map",
+    "main.ed866f89.js.map": "/Bookmyseat/static/js/main.ed866f89.js.map",
+    "787.bc7d429a.chunk.js.map": "/Bookmyseat/static/js/787.bc7d429a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.080b5275.css",
+    "static/js/main.ed866f89.js"
+  ]
+}
