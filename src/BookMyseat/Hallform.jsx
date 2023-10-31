@@ -29,7 +29,6 @@ const Hallform = () => {
       }, [seatStatus]);
       
       const updateSelectedCount = () => {
-        selectedSeats = document.querySelectorAll('.row .seat.selected');
         const seatsCount = selectedSeats.length;
         setTotal(seatsCount * ticketPrice);
       };
@@ -39,45 +38,28 @@ const Hallform = () => {
         updateSelectedCount();
       };
 
-      const handleSeatClick = (seatIndex) => 
-      {
-        if ( seatStatus[seatIndex] === 'available') 
-        {
-          const updatedSeatStatus = [...seatStatus];
-          updatedSeatStatus[seatIndex] = 'selected';
-          setSeatStatus(updatedSeatStatus);
-          setSelectedSeats([...selectedSeats, seatIndex]);
-        } 
-        else if (seatStatus[seatIndex] === 'selected') 
-        {
+      const handleSeatClick = (seatIndex) => {
+        if (seatStatus[seatIndex] === 'available') {
+          const rowIndex = Math.floor(seatIndex / 10);
+          const maxPremiumRows = 3;
+          const isPremiumSeat = rowIndex < maxPremiumRows;
+      
+          if ((ticketPrice === 120 && isPremiumSeat) || (ticketPrice === 80 && !isPremiumSeat)) {
+            const updatedSeatStatus = [...seatStatus];
+            updatedSeatStatus[seatIndex] = 'selected';
+            setSeatStatus(updatedSeatStatus);
+            setSelectedSeats(prevSelectedSeats => [...prevSelectedSeats, seatIndex]);
+          } 
+          else {
+            alert('Invalid seat selection for the selected ticket type. only first 3 rows for premium');
+          }
+        } else if (seatStatus[seatIndex] === 'selected') {
           const updatedSeatStatus = [...seatStatus];
           updatedSeatStatus[seatIndex] = 'available';
           setSeatStatus(updatedSeatStatus);
-          setSelectedSeats(selectedSeats.filter(seat => seat !== seatIndex));
+          setSelectedSeats(prevSelectedSeats => prevSelectedSeats.filter(seat => seat !== seatIndex));
         }
       };
-    //   const handleSeatClick = (seatIndex) => {
-    //     if (seatStatus[seatIndex] === 'available') {
-    //       const rowIndex = Math.floor(seatIndex / 10); // Calculate the row index
-    //       const maxPremiumRows = 3; // Maximum premium rows
-    //       const isPremiumSeat = rowIndex < maxPremiumRows; // Check if the seat is in a premium row
-    
-    //       if ((ticketPrice === 120 && isPremiumSeat) || (ticketPrice === 80 && !isPremiumSeat)) {
-    //         const updatedSeatStatus = [...seatStatus];
-    //         updatedSeatStatus[seatIndex] = 'selected';
-    //         setSeatStatus(updatedSeatStatus);
-    //         setSelectedSeats([...selectedSeats, seatIndex]);
-    //       } else {
-    //         // Show an alert or handle the case where the seat cannot be selected
-    //         alert('Invalid seat selection for the selected ticket type.');
-    //       }
-    //     } else if (seatStatus[seatIndex] === 'selected') {
-    //       const updatedSeatStatus = [...seatStatus];
-    //       updatedSeatStatus[seatIndex] = 'available';
-    //       setSeatStatus(updatedSeatStatus);
-    //       setSelectedSeats(selectedSeats.filter(seat => seat !== seatIndex));
-    //     }
-    //   };
 
       const handleProceedClick = () => {
         const updatedSeatStatus = [...seatStatus];
@@ -89,6 +71,8 @@ const Hallform = () => {
       };
     
   return (
+    <div>
+      <h1 id='heading'>BookMySeat</h1>
     <div className='ticketTypeContainer'>
             <label htmlFor="ticket">
             <select name="ticket" id="ticket" onChange={handleTicketTypeChange}>  
@@ -151,6 +135,7 @@ const Hallform = () => {
       </div>
       {proceeded && <BookingConfirm selectedSeats={selectedSeats} ticketType={ticketPrice === 120 ? 'Premium' : 'Standard'} />}
 
+    </div>
     </div>
     
   )

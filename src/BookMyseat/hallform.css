@@ -10,8 +10,14 @@ body{
     height: 100vh;
     font-family: sans-serif;
 }
+#heading{
+    color: rgb(66, 154, 154);
+    text-shadow: 2px 1px 2px rgb(117, 158, 178);
+    width: 100%;
+    text-align: center;
+    
+}
 .ticketTypeContainer{
-    /* margin-left: 20px ; */
     margin-bottom: 10px;
 }
 .ticketTypeContainer select{
@@ -46,9 +52,7 @@ body{
     border-top-right-radius: 10px ;
 }
 .seat-container{
-    /* background-color: cadetblue; */
     padding: 15px;
-    /* border: 2px solid; */
 }
 .row{
     display: flex;
