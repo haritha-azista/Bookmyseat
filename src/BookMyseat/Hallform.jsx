@@ -106,7 +106,7 @@ const Hallform = () => {
       <h1 id='heading'>BookMySeat</h1>
     <div className='ticketAndquantity-Container'> 
     <div className='ticketTypeContainer'> 
-            <select name="ticket" id="ticket" onChange={handleTicketTypeChange} style={{backgroundColor:'rgb(91, 157, 101)', color:'white', borderColor:'white'}}>  
+            <select name="ticket" id="ticket" onChange={handleTicketTypeChange} style={{backgroundColor:'cadetblue', color:'white', borderColor:'white'}}>  
                 <option>Ticket Type</option>
                 <option value="120">Premium(₹120)</option>
                 <option value="80">Standard(₹80)</option>
