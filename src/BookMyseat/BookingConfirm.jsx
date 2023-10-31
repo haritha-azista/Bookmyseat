@@ -7,7 +7,7 @@ const BookingConfirm = ({ selectedSeats, ticketType, price }) => {
       <h2>Booking Confirmation</h2>
       <p>Ticket Type: {ticketType}</p>
       <p>Number of Seats Selected: {selectedSeats.length}</p>
-      <p>Selected Seats: {selectedSeats.join(', ')}</p>
+      <p>Selected Seat No's: {selectedSeats.join(', ')}</p>
       <p>Price :{price}</p>
       <p>Thank you for your booking!</p>
     </div>

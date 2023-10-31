@@ -103,7 +103,7 @@ const Hallform = () => {
     
   return (
     <div>
-      <h1 id='heading'>BookMySeat</h1>
+      <h1 id='heading'>Book My Seat</h1>
     <div className='ticketAndquantity-Container'> 
     <div className='ticketTypeContainer'> 
             <select name="ticket" id="ticket" onChange={handleTicketTypeChange} style={{backgroundColor:'cadetblue', color:'white', borderColor:'white'}}>  
